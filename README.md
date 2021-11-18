@@ -107,5 +107,5 @@ done
 ## Thanks
 
 - [netmaker](https://github.com/gravitl/netmaker)
-- [](https://github.com/mwarning/zerotier-openwrt)
+- [zerotier-openwrt](https://github.com/mwarning/zerotier-openwrt)
 - [openwrt-golang-package-test-feed](https://github.com/jefferyto/openwrt-golang-package-test-feed)

@@ -41,7 +41,7 @@ A feed is the standard way packages are made available to the OpenWRT build syst
 Put this line in your feeds list file (e.g. feeds.conf.default)
 
 ```bash
-src-git netmaker http://gogs.zt.sbilly.com/OpenWRT/netmaker-openwrt.git
+src-git netmaker http://github.com/sbilly/netmaker-openwrt.git
 ```
 
 Update and install the new feed

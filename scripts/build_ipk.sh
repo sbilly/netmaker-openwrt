@@ -44,6 +44,8 @@ init_openwrt_branch() {
 init_openwrt_link() {
 	cd ${WORK_DIR}/openwrt
 
+	sudo chown 1000:1000 /src -R
+
 	mkdir -p /src/dl
 	mkdir -p /src/staging_dir
 	mkdir -p /src/build_dir

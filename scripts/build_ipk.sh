@@ -138,7 +138,9 @@ openwrt_make_netmaker_package() {
 openwrt_copy_pacage() {
 	cd ${WORK_DIR}/openwrt/bin/packages/x86_64/netmaker/
 
-	find ./ -name "netmaker*.ipk"|xargs -n1 |gawk -F".ipk" -v branch=${1} '{ print "cp "$0" "/src/bin/$1"-"branch".ipk"}' > /tmp/copy.sh
+	ls -alF ${WORK_DIR}/openwrt/bin/packages/x86_64/netmaker/
+
+	find ./ -name "netmaker*.ipk"|xargs -n1 |gawk -F".ipk" -v branch=${1} '{ print "cp -rfv "$0" "/src/bin/$1"-"branch".ipk"}' > /tmp/copy.sh
 	/bin/bash /tmp/copy.sh
 }
 

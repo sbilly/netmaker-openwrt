@@ -110,9 +110,19 @@ openwrt_install_package_netmaker_config() {
 	cd ${WORK_DIR}/openwrt
 
 	echo "CONFIG_FEED_netmaker=y" >> ${WORK_DIR}/openwrt/.config
-	echo "CONFIG_PACKAGE_netmaker=y" >> ${WORK_DIR}/openwrt/.config
-	echo "CONFIG_PACKAGE_netmaker-dev=y" >> ${WORK_DIR}/openwrt/.config
+	echo "CONFIG_PACKAGE_netmaker=m" >> ${WORK_DIR}/openwrt/.config
+	echo "CONFIG_PACKAGE_netmaker-dev=m" >> ${WORK_DIR}/openwrt/.config
 }
+
+
+openwrt_make_netmaker_package() {
+	cd ${WORK_DIR}/openwrt
+
+	make package/netmaker/clean
+	find ./ -type d | xargs -n1 sudo chmod 755 -R
+	make package/netmaker/compile
+}
+
 
 download_openwrt
 
@@ -129,6 +139,8 @@ update_install_openwrt_feeds
 openwrt_init_config
 
 openwrt_install_package_netmaker_config
+
+openwrt_make_netmaker_package
 
 ls -alF ${WORK_DIR}/openwrt/bin/
 

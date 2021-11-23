@@ -95,17 +95,6 @@ openwrt_install_netmaker_feeds() {
 	./scripts/feeds install netmaker
 }
 
-openwrt_make_package() {
-	cd ${WORK_DIR}/openwrt
-
-	if [ "${1}" = "" ]
-	then
-		make package/${1}/clean
-		find ./ -type d | xargs -n1 sudo chmod 755 -R
-		make package/${1}/compile
-	fi
-}
-
 openwrt_install_package_netmaker_config() {
 	cd ${WORK_DIR}/openwrt
 
@@ -118,6 +107,7 @@ openwrt_install_package_netmaker_config() {
 openwrt_make_netmaker_package() {
 	cd ${WORK_DIR}/openwrt
 
+	make defconfig
 	make package/netmaker/clean
 	find ./ -type d | xargs -n1 sudo chmod 755 -R
 	make package/netmaker/compile

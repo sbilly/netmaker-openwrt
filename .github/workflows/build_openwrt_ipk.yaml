@@ -49,4 +49,4 @@ jobs:
         echo "Building ${{ matrix.branch }} branch."
 
         # build ipk
-        docker run -i --rm -e OPENWRT_BRANCH="${{ matrix.branch }}" -v `pwd`:/src sbilly/openwrt-builder:latest /bin/bash /src/scripts/build_ipk.sh ${{ matrix.branch }}
+        docker run -t --rm -e OPENWRT_BRANCH="${{ matrix.branch }}" -v `pwd`:/src sbilly/openwrt-builder:latest /bin/bash /src/scripts/build_ipk.sh ${{ matrix.branch }}

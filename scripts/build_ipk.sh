@@ -130,5 +130,5 @@ openwrt_init_config
 
 openwrt_install_package_netmaker_config
 
-tree ${WORK_DIR}/openwrt/bin
+ls -alF ${WORK_DIR}/openwrt/bin/
 

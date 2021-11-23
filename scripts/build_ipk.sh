@@ -56,7 +56,6 @@ init_openwrt_link() {
 	ln -s /src/staging_dir ${WORK_DIR}/openwrt/staging_dir
 	ln -s /src/build_dir ${WORK_DIR}/openwrt/build_dir
 	ln -s /src/tmp ${WORK_DIR}/openwrt/tmp
-	ln -s /src/bin ${WORK_DIR}/openwrt/bin
 }
 
 update_install_openwrt_feeds() {
@@ -136,6 +135,13 @@ openwrt_make_netmaker_package() {
 }
 
 
+openwrt_copy_pacage() {
+	cd ${WORK_DIR}/openwrt/bin/packages/x86_64/netmaker/
+
+	find ./ -name "netmaker*.ipk"|xargs -n1 |gawk -F".ipk" -v branch=${1} '{ print "cp "$0" "/src/bin/$1"-"branch".ipk"}' > /tmp/copy.sh
+	/bin/bash /tmp/copy.sh
+}
+
 download_openwrt
 
 change_openwrt_branch ${DEFAULT_OPENWRT_BRANCH}
@@ -156,5 +162,6 @@ openwrt_patch_golang_host ${DEFAULT_OPENWRT_BRANCH}
 
 openwrt_make_netmaker_package
 
-ls -alF ${WORK_DIR}/openwrt/bin/
+openwrt_copy_pacage ${DEFAULT_OPENWRT_BRANCH}
 
+ls -alF ${WORK_DIR}/openwrt/bin/ /src/bin

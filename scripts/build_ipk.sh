@@ -111,12 +111,14 @@ openwrt_patch_golang_host() {
 	echo "patching ${1}"
 
 	if [ "${1}" = "openwrt-19.07" ]
+	then
 		sed -i 's/5fb43171046cf8784325e67913d55f88a683435071eef8e9da1aa8a1588fcf5d/2255eb3e4e824dd7d5fcdc2e7f84534371c186312e546fb1086a34c17752f431/g' ${WORK_DIR}/openwrt/feeds/packages/lang/golang/golang/Makefile
 		sed -i 's/1.13/1.17/g' ${WORK_DIR}/openwrt/feeds/packages/lang/golang/golang-version.mk
 		sed -i 's/15/2/g' ${WORK_DIR}/openwrt/feeds/packages/lang/golang/golang-version.mk
 	fi
 
 	if [ "${1}" = "openwrt-18.06" ]
+	then
 		sed -i 's/6faf74046b5e24c2c0b46e78571cca4d65e1b89819da1089e53ea57539c63491/2255eb3e4e824dd7d5fcdc2e7f84534371c186312e546fb1086a34c17752f431/g' ${WORK_DIR}/openwrt/feeds/packages/lang/golang/golang/Makefile
 		sed -i 's/1.10/1.17/g' ${WORK_DIR}/openwrt/feeds/packages/lang/golang/golang-version.mk
 		sed -i 's/8/2/g' ${WORK_DIR}/openwrt/feeds/packages/lang/golang/golang-version.mk

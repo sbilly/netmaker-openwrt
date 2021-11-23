@@ -129,6 +129,7 @@ openwrt_make_netmaker_package() {
 	cd ${WORK_DIR}/openwrt
 
 	make defconfig
+	make toolchain/gcc/final/compile
 	make package/netmaker/clean
 	find ./ -type d | xargs -n1 sudo chmod 755 -R
 	make package/netmaker/compile V=s

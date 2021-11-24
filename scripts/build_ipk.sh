@@ -141,13 +141,13 @@ openwrt_copy_pacage() {
 
 	cd ${WORK_DIR}/openwrt/bin/packages/x86_64/netmaker/
 
-	for ipk in ${WORK_DIR}/openwrt/bin/packages/x86_64/netmaker/*.ipk
+	for ipk in ./*.ipk
 	do
 		if [ -f "$ipk" ]
 		then
 			echo ${ipk}
-			echo ${ipk} | gawk -F".ipk" '{ print $0 $1 }'
-			echo ${ipk} | gawk -F".ipk" -v branch=${1} '{ print "cp -rfv "$0" "/src/bin/$1"-"branch".ipk"}'
+			echo ${ipk} | gawk -F".ipk" '{ print "cp -rfv "$0" /src/bin/"$1"-.ipk" }'
+			echo ${ipk} | gawk -F".ipk" -v BRANCH=${1} '{ print "cp -rfv "$0" /src/bin/"$1"-"BRANCH".ipk" }'
 			echo ${ipk} | gawk -F".ipk" -v branch=${1} '{ print "cp -rfv "$0" "/src/bin/$1"-"branch".ipk"}' >> /tmp/copy.sh
 		fi
 	done

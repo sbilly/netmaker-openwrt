@@ -145,10 +145,7 @@ openwrt_copy_pacage() {
 	do
 		if [ -f "$ipk" ]
 		then
-			echo ${ipk}
-			echo ${ipk} | gawk -F".ipk" '{ print "cp -rfv "$0" /src/bin/"$1"-.ipk" }'
-			echo ${ipk} | gawk -F".ipk" -v BRANCH=${1} '{ print "cp -rfv "$0" /src/bin/"$1"-"BRANCH".ipk" }'
-			echo ${ipk} | gawk -F".ipk" -v branch=${1} '{ print "cp -rfv "$0" "/src/bin/$1"-"branch".ipk"}' >> /tmp/copy.sh
+			echo ${ipk} | gawk -F".ipk" -v BRANCH=${1} '{ print "cp -rfv "$0" /src/bin/"$1"-"BRANCH".ipk" }' >> /tmp/copy.sh
 		fi
 	done
 

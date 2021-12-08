@@ -75,9 +75,10 @@ This package provides the source files.
 endef
 
 define Package/netmaker/install
-	mkdir -p $(INSTALL_DIR)/etc/netclient/config
-	mkdir -p $(INSTALL_DIR)/etc/netclient/
-	mkdir -p $(INSTALL_DIR)/etc/systemd/system
+	$(INSTALL_DIR) $(1)/etc/netclient/
+	$(INSTALL_DIR) $(1)/etc/netclient/config
+	$(INSTALL_DIR) $(1)/etc/systemd/
+	$(INSTALL_DIR) $(1)/etc/systemd/system
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/netmaker $(1)/usr/bin/
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/netclient $(1)/usr/bin/

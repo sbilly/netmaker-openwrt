@@ -79,6 +79,7 @@ define Package/netmaker/install
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/netmaker $(1)/usr/bin/
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/netclient $(1)/usr/bin/
 	$(CP) ./files/* $(1)/
+	$(LN) netclient $(1)/etc/netclient/netclient
 endef
 
 $(eval $(call GoBinPackage,netmaker))

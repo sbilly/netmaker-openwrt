@@ -33,7 +33,7 @@ stop() {
 }
 
 status() {
-  local PID=$(ps -e|grep "netclient checkin -n all"|grep -v grep|awk '{print $1}')
+  local PID=$(ps|grep "netclient checkin -n all"|grep -v grep|awk '{print $1}')
   if [ "${PID}" ];then
     echo -e "netclient[${PID}] is running \n"
   else

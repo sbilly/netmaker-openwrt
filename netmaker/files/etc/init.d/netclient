@@ -8,6 +8,9 @@ START=99
 LOG_FILE="/tmp/netclient.logs"
 
 start() {
+  mkdir -p /etc/netclient/config
+  mkdir -p /etc/systemd/system
+
   if [ ! -f "${LOG_FILE}" ];then
       touch "${LOG_FILE}"
   fi

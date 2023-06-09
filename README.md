@@ -86,7 +86,7 @@ For a release, it is useful the build packages at a bulk for multiple targets:
 ./scripts/dump-target-info.pl architectures | while read pkgarch target1 rest; do
   echo "CONFIG_TARGET_${target1%/*}=y" > .config
   echo "CONFIG_TARGET_${target1%/*}_${target1#*/}=y" >> .config
-  echo "CONFIG_PACKAGE_example1=y" >> .config
+  echo "CONFIG_PACKAGE_netmaker=y" >> .config
 
   # Debug output
   echo "pkgarch: $pkgarch, target1: $target1"
